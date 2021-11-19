@@ -23,6 +23,7 @@ document.getElementById("btnRegistrar").addEventListener("click",()=>{
 
     } else if (raza.value == "Humano"){
         nuevoParticipante = new Humano(nombre.value,imgSrc,ki.value,raza.value);// ojo tenia valueI
+        ver(nuevoParticipante)
     }
 
     if (raza.value && nombre.value && ki.value && imagenSrcBg) {//exito
@@ -40,6 +41,11 @@ document.getElementById("btnRegistrar").addEventListener("click",()=>{
 
 
 })
+
+function ver(nuevoParticipante){
+    console.log(nuevoParticipante)
+
+}
 
 const reloadTable = () => {
     const participantesTemplate = document.getElementById("Participantes")
@@ -66,6 +72,8 @@ const reloadTable = () => {
 // no funcionaría con ES5 o ES6 , por eso se usa window
 window.activarHabilidad = (i) => {
     const participante = participantes[i]
+    console.log(participante)
+    console.log('i ',i)
     if (participante.getRaza() == "Saiyajin") {
         participante.Transformacion()
     } else if (participante.getRaza() == "Humano") {
