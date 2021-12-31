@@ -28,7 +28,7 @@ document.getElementById("btnRegistrar").addEventListener("click",()=>{
 
     if (raza.value && nombre.value && ki.value && imagenSrcBg) {//exito
         participantes.push(nuevoParticipante)
-        console.log(participantes)
+        console.log('participantes', participantes)
         nombre.selectedIndex = 0// decidimos q esa es la opcion q esta activada en este momento
         raza.selectedIndex = 0
         previewElement.style.backgroundImage = "none"
@@ -44,25 +44,24 @@ document.getElementById("btnRegistrar").addEventListener("click",()=>{
 
 function ver(nuevoParticipante){
     console.log(nuevoParticipante)
-
 }
 
 const reloadTable = () => {
     const participantesTemplate = document.getElementById("Participantes")
     participantesTemplate.innerHTML = ""
-    participantes.forEach((p,i)=>{
+    participantes.forEach((item,i)=>{
         participantesTemplate.innerHTML+=`
-        <div class="px-3 pb-2 participante" data-fighter="${p.getNombre()}">
-            <div class="card">
+        <div class="px-4 pb-2 participante pers" data-fighter="${item.getNombre()}">
+            <div class="card cuadro">
                 <img 
-                src="${p.getImg()}"
+                src="${item.getImg()}"
                 class="card-img-top">
-                <div class="card-body">
-                    <h4 class="card-title">${p.getNombre()}</h4>
+                <div class="card-body cuerpo">
+                    <h4 class="card-title rp">${item.getNombre()}</h4>
                     <hr class="w-50 mx-auto">
-                    <h6 class="card-text">Raza: ${p.getRaza()}</h6>
-                    <h6 class="card-text">Poder de pelea: <span class="text-danger"> ${p.getPoder()}</span></h6>
-                    <button class="btn btn-outline-warning" onclick="activarHabilidad('${i}')"> Habilidad Especial</button>
+                    <h6 class="card-text rp">Raza: ${item.getRaza()}</h6>
+                    <h6 class="card-text rp">Poder de pelea: <span class="text-danger"> ${item.getPoder()}</span></h6>
+                    <button class="btn btn-outline-warning habil" onclick="activarHabilidad('${i}')"> Habilidad Especial</button>
                 </div>
             </div>
         </div>

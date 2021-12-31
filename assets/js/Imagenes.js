@@ -1,15 +1,17 @@
 import Personajes from "./Consulta.js";
  
-document.getElementById("buttonImages").addEventListener("click", async () => {
-    const {personajes} = await Personajes.getData();
+buttonImages.addEventListener("click", async() => {
+    
+    const { personajes } = await Personajes.getData();
     console.log('personajes' ,personajes);
-    const pj = document.getElementById("nombre").value;
-    console.log('pj ' ,pj);
+    const personaje = document.getElementById("nombre").value; // tiene q ser value para nombre
+    //alert('personaje ' ,personaje);
 
-    const imagenesPjTemplate = personajes.find((p) => p.name == pj).imagenes.map((k) => `<img width="200" src="/assets/imgs/${pj}/${k}" />`).join("");
+    const imagenesPjTemplate = personajes.find((item) => item.name == personaje).imagenes.map((foto) => `<img width="200" src="./assets/imgs/${personaje}/${foto}" />`).join("");
 
     document.getElementsByClassName("personajes")[0].innerHTML = imagenesPjTemplate
 
+    // ubicar en cuadro
     document.querySelectorAll(".personajes img").forEach((i) => {
         i.addEventListener("click", (e) => {
             $("#imagenesModal").modal("toggle")
